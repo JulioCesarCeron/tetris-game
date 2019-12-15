@@ -14,15 +14,24 @@
 </head>
 <body>
 	<div class="grid">
-		<canvas id="board" class="game-board"></canvas>
+		<canvas id="board-canvas" class="game-board"></canvas>
 		<div class="right-column">
 			<div>
 				<h1>TETRIS</h1>
 				<p id="score"><span>0</span></p>
 				<p id="lines"><span>0</span></p>
 				<p id="level"><span>0</span></p>
+				<canvas id="next" class="next"></canvas>
 			</div>
+			<button onclick="play()" class="play-button">Play</button>
 		</div>
 	</div>
+
+	<!-- scripts -->
+	<script type="text/javascript" src="constants.js"></script>
+	<script type="text/javascript" src="board.js"></script>
+	<script type="text/javascript" src="piece.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<!-- scripts -->
 </body>
 </html>
