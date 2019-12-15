@@ -14,7 +14,8 @@ addEventListenerMove();
 moves = {
   [KEY.LEFT]:  p => ({ ...p, x: p.x - 1 }),
   [KEY.RIGHT]: p => ({ ...p, x: p.x + 1 }),
-	[KEY.DOWN]:    p => ({ ...p, y: p.y + 1 }),
+	[KEY.DOWN]:  p => ({ ...p, y: p.y + 1 }),
+	[KEY.SPACE]:  p => ({ ...p, y: p.y + 1 }),
 };
 
 
@@ -24,19 +25,28 @@ function play() {
 	let piece = new Piece(ctx);
 	piece.draw();
 	board.piece = piece;
-	console.table(board.grid);
+	// console.table(board.grid);
 }
 
 function addEventListenerMove() {
 	document.addEventListener('keydown', event => {
-		if (moves[event.keyCode]) {  
+		if (moves[event.keyCode]) {
+
 			// Stop the event from bubbling.
 			event.preventDefault();
 			
 			// Get new state of piece
 			let p = moves[event.keyCode](board.piece);
 			
-			if (board.valid(p)) {    
+			if (event.keyCode === KEY.SPACE) {
+				// Hard drop
+				while (board.valid(p)) {
+					board.piece.move(p);   
+					p = moves[KEY.DOWN](board.piece);
+					ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); 
+					board.piece.draw();
+				}
+			} else if (board.valid(p)) {    
 				// If the move is valid, move the piece.
 				board.piece.move(p);
 				
