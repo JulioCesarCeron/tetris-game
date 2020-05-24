@@ -85,8 +85,7 @@ class Board {
 	}
 
 	rotate(piece) {
-		console.log('rotate');
-		let p = JSON.parse(JSON.stringify(piece));
+		let p = piece;
 
 		// Transpose matrix
     for (let y = 0; y < p.shape.length; ++y) {
