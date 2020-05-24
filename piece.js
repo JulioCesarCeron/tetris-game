@@ -11,8 +11,7 @@ class Piece {
 	}
 
 	spawn() {
-		this.color = 'blue';
-		this.typeId = this.randomizeTetrominoType(COLORS.length - 1);
+		this.typeId = this.randomizeTetrominoType(SHAPES.length);
 		this.shape = SHAPES[this.typeId];
 		this.color = COLORS[this.typeId];
 
@@ -22,7 +21,7 @@ class Piece {
 	}
 
 	randomizeTetrominoType(noOfTypes) {
-		return Math.floor(Math.random() * noOfTypes + 1);
+		return Math.floor(Math.random() * noOfTypes);
 	}
 
 	draw() {
