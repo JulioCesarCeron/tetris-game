@@ -58,7 +58,11 @@ function resetGame() {
   account.lines = 0;
   account.level = 0;
   board.reset();
-  time = { start: 0, elapsed: 0, level: LEVEL[account.level] };
+  time = {
+		start: 0,
+		elapsed: 0,
+		level: LEVEL[account.level]
+	};
 }
 
 function play() {
